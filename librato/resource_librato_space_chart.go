@@ -59,7 +59,6 @@ func resourceLibratoSpaceChart() *schema.Resource {
 			"use_last_value": {
 				Type:     schema.TypeBool,
 				Optional: true,
-				Default:  true,
 			},
 			"stream": {
 				Type:     schema.TypeSet,
