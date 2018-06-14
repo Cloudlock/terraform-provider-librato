@@ -107,6 +107,11 @@ func resourceLibratoAlert() *schema.Resource {
 				},
 				Set: resourceLibratoAlertConditionsHash,
 			},
+            "md": {
+				Type:     schema.TypeBool,
+				Optional: true,
+				Default:  true,
+			},
 			"attributes": {
 				Type:     schema.TypeList,
 				Optional: true,
@@ -235,6 +240,7 @@ func resourceLibratoAlertCreate(d *schema.ResourceData, meta interface{}) error 
 		}
 		alert.Conditions = conditions
 	}
+	alert.Md = librato.Bool(d.Get("md").(bool))
 	if v, ok := d.GetOk("attributes"); ok {
 		attributeData := v.([]interface{})
 		if len(attributeData) > 1 {
@@ -330,6 +336,12 @@ func resourceLibratoAlertRead(d *schema.ResourceData, meta interface{}) error {
 	if err := d.Set("attributes", attributes); err != nil {
 		return err
 	}
+
+	if alert.Active != nil {
+        if err := d.Set("md", alert.Md); err != nil {
+            return err
+        }
+    }
 
 	return nil
 }
@@ -503,6 +515,9 @@ func resourceLibratoAlertUpdate(d *schema.ResourceData, meta interface{}) error 
 			attributes.RunbookURL = librato.String(v)
 		}
 		alert.Attributes = attributes
+	}
+	if d.HasChange("md") {
+		alert.Md = librato.Bool(d.Get("md").(bool))
 	}
 
 	log.Printf("[INFO] Updating Librato alert: %s", alert)
