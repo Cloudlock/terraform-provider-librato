@@ -5,10 +5,10 @@ import (
 	"strconv"
 	"testing"
 
+	"github.com/Cloudlock/go-librato/librato"
 	"github.com/hashicorp/terraform/helper/acctest"
 	"github.com/hashicorp/terraform/helper/resource"
 	"github.com/hashicorp/terraform/terraform"
-	"github.com/henrikhodne/go-librato/librato"
 )
 
 func TestAccLibratoSpace_Basic(t *testing.T) {

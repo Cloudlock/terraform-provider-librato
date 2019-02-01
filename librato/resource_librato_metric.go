@@ -6,9 +6,9 @@ import (
 	"log"
 	"time"
 
+	"github.com/Cloudlock/go-librato/librato"
 	"github.com/hashicorp/terraform/helper/resource"
 	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/henrikhodne/go-librato/librato"
 )
 
 func resourceLibratoMetric() *schema.Resource {

@@ -8,10 +8,10 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/Cloudlock/go-librato/librato"
 	"github.com/hashicorp/terraform/helper/hashcode"
 	"github.com/hashicorp/terraform/helper/resource"
 	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/henrikhodne/go-librato/librato"
 )
 
 func resourceLibratoAlert() *schema.Resource {

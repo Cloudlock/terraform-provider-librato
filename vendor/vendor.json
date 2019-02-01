@@ -522,7 +522,7 @@
 		},
 		{
 			"checksumSHA1": "o9U0fbkAJEUAszp4RHNjrCZaaX0=",
-			"path": "github.com/henrikhodne/go-librato/librato",
+			"path": "github.com/Cloudlock/go-librato/librato",
 			"revision": "92cd9647dc6914b228205c03def7f57f7248fbe8",
 			"revisionTime": "2017-06-25T18:27:10Z"
 		},
