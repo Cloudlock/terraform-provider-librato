@@ -10,10 +10,10 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/Cloudlock/go-librato/librato"
 	"github.com/hashicorp/terraform/helper/hashcode"
 	"github.com/hashicorp/terraform/helper/resource"
 	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/henrikhodne/go-librato/librato"
 )
 
 func resourceLibratoSpaceChart() *schema.Resource {
@@ -171,6 +171,7 @@ func resourceLibratoSpaceChartHash(v interface{}) int {
 	buf.WriteString(fmt.Sprintf("%s-", m["metric"].(string)))
 	buf.WriteString(fmt.Sprintf("%s-", m["source"].(string)))
 	buf.WriteString(fmt.Sprintf("%s-", m["composite"].(string)))
+
 	tags := m["tag"].([]interface{})
 	less := func(i, j int) bool {
 		left := tags[i].(map[string]interface{})
@@ -305,6 +306,9 @@ func resourceLibratoSpaceChartCreate(d *schema.ResourceData, meta interface{}) e
 			}
 			if v, ok := streamData["max"].(float64); ok && !math.IsNaN(v) {
 				stream.Max = librato.Float(v)
+			}
+			if v, ok := streamData["period"].(int); ok {
+				stream.Period = librato.Int(v)
 			}
 			streams[i] = stream
 		}
@@ -441,6 +445,9 @@ func resourceLibratoSpaceChartStreamsGather(d *schema.ResourceData, streams []li
 		if s.Max != nil {
 			stream["max"] = *s.Max
 		}
+		if s.Period != nil {
+			stream["period"] = *s.Period
+		}
 		if s.Tags != nil {
 			var retTags []map[string]interface{}
 			for _, t := range s.Tags {
@@ -557,6 +564,9 @@ func resourceLibratoSpaceChartUpdate(d *schema.ResourceData, meta interface{}) e
 			}
 			if v, ok := streamData["max"].(float64); ok && !math.IsNaN(v) {
 				stream.Max = librato.Float(v)
+			}
+			if v, ok := streamData["period"].(int); ok {
+				stream.Period = librato.Int(v)
 			}
 			if v, ok := streamData["tag"]; ok {
 				tagsList := v.([]interface{})
