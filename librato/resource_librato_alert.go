@@ -107,7 +107,7 @@ func resourceLibratoAlert() *schema.Resource {
 				},
 				Set: resourceLibratoAlertConditionsHash,
 			},
-            "md": {
+			"md": {
 				Type:     schema.TypeBool,
 				Optional: true,
 				Default:  true,
@@ -338,10 +338,10 @@ func resourceLibratoAlertRead(d *schema.ResourceData, meta interface{}) error {
 	}
 
 	if alert.Active != nil {
-        if err := d.Set("md", alert.Md); err != nil {
-            return err
-        }
-    }
+		if err := d.Set("md", alert.Md); err != nil {
+			return err
+		}
+	}
 
 	return nil
 }
