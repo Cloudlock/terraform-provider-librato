@@ -1,12 +1,6 @@
 Terraform Provider
 ==================
 
-- Website: https://www.terraform.io
-- [![Gitter chat](https://badges.gitter.im/hashicorp-terraform/Lobby.png)](https://gitter.im/hashicorp-terraform/Lobby)
-- Mailing list: [Google Groups](http://groups.google.com/group/terraform-tool)
-
-<img src="https://cdn.rawgit.com/hashicorp/terraform-website/master/content/source/assets/images/logo-hashicorp.svg" width="600px">
-
 Requirements
 ------------
 
@@ -16,23 +10,27 @@ Requirements
 Building The Provider
 ---------------------
 
-Clone repository to: `$GOPATH/src/github.com/hashicorp/terraform-provider-$PROVIDER_NAME`
+Clone repository to: `$GOPATH/src/github.com/Cloudlock/terraform-provider-librato`
 
 ```sh
-$ mkdir -p $GOPATH/src/github.com/hashicorp; cd $GOPATH/src/github.com/hashicorp
-$ git clone git@github.com:hashicorp/terraform-provider-$PROVIDER_NAME
+$ mkdir -p $GOPATH/src/github.com/Cloudlock; cd $GOPATH/src/github.com/Cloudlock
+$ git clone git@github.com:Cloudlock/terraform-provider-librato
 ```
 
 Enter the provider directory and build the provider
 
 ```sh
-$ cd $GOPATH/src/github.com/hashicorp/terraform-provider-$PROVIDER_NAME
+$ cd $GOPATH/src/github.com/Cloudlock/terraform-provider-librato
 $ make build
 ```
 
 Using the provider
 ----------------------
-## Fill in for each provider
+```sh
+$ make build
+cp $GOPATH/bin/terraform-provider-librato ~/.terraform.d/plugins/
+```
+
 
 Developing the Provider
 ---------------------------
@@ -44,7 +42,7 @@ To compile the provider, run `make build`. This will build the provider and put 
 ```sh
 $ make bin
 ...
-$ $GOPATH/bin/terraform-provider-$PROVIDER_NAME
+$ $GOPATH/bin/terraform-provider-librato
 ...
 ```
 
@@ -61,3 +59,9 @@ In order to run the full suite of Acceptance tests, run `make testacc`.
 ```sh
 $ make testacc
 ```
+
+Install it to use with Terraform
+```
+cp $GOPATH/bin/terraform-provider-librato ~/.terraform.d/plugins/
+```
+
