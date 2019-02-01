@@ -1,8 +1,8 @@
 package main
 
 import (
+	"github.com/Cloudlock/terraform-provider-librato/librato"
 	"github.com/hashicorp/terraform/plugin"
-	"github.com/ychemerys/terraform-provider-librato/librato"
 )
 
 func main() {

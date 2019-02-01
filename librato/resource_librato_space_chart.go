@@ -86,8 +86,8 @@ func resourceLibratoSpaceChart() *schema.Resource {
 										Required: true,
 									},
 									"grouped": {
-										Type:     schema.TypeBool,
-										Optional: true,
+										Type:          schema.TypeBool,
+										Optional:      true,
 										ConflictsWith: []string{"stream.tag.values"},
 									},
 									"dynamic": {
