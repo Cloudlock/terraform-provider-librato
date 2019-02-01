@@ -1,9 +1,9 @@
 package librato
 
 import (
+	"github.com/Cloudlock/go-librato/librato"
 	"github.com/hashicorp/terraform/helper/schema"
 	"github.com/hashicorp/terraform/terraform"
-	"github.com/henrikhodne/go-librato/librato"
 )
 
 // Provider returns a schema.Provider for Librato.
